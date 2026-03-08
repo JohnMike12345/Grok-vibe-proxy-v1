@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: grok-openai-proxy
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DEFAULT_MODEL
+        value: grok-proxy
+      - key: UPSTREAM_URL
+        sync: false
+      - key: UPSTREAM_AUTH_HEADER
+        value: Authorization
+      - key: UPSTREAM_AUTH_TOKEN
+        sync: false
+      - key: UPSTREAM_TIMEOUT_MS
+        value: 120000
